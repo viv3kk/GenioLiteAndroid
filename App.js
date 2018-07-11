@@ -1,16 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, BackHandler} from 'react-native';
+import {Platform, StyleSheet, Text, View, BackHandler, ActivityIndicator,PermissionsAndroid} from 'react-native';
 
 // import module
 import CustomWebView from "react-native-webview-android-file-upload"; 
+
+
 
 console.ignoredYellowBox = ['Remote debugger'];
 
@@ -33,7 +27,7 @@ export default class App extends Component {
       platform:Platform.OS
     }
   }
-  
+
   componentWillMount() {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', this.onAndroidBackPress);
@@ -95,6 +89,18 @@ export default class App extends Component {
     console.log('navState',navState)
   }
 
+  renderLoading(){
+    return (
+      <View style={[styles.container, styles.horizontal]}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="small" color="#00ff00" />
+        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="small" color="#00ff00" />
+      </View>
+    )
+    
+  }
+
   render() {
 
     const uri_source = 'http://project02.vivek.26.blrsoftware.com/GENIO_LITE/genio_lite/#/';
@@ -110,6 +116,7 @@ export default class App extends Component {
         geolocationEnabled={true} // Only for Android
         allowUniversalAccessFromFileURLs={true}
         onNavigationStateChange={this.onNavigationStateChange.bind(this)}
+        renderLoading={this.renderLoading.bind(this)}
         // any other props supported by React Native's WebView
       />
     );
@@ -119,19 +126,12 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'center'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
+  }
+})
 
