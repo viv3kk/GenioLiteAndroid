@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "579456987455",
+    "firebase_url": "https://genioliteandroid.firebaseio.com",
+    "project_id": "genioliteandroid",
+    "storage_bucket": "genioliteandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579456987455:android:c64d73d704234558",
+        "android_client_info": {
+          "package_name": "com.genioliteandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579456987455-m5qc977c4jeph84bhd5ik0lj27e931bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ55afmPufbCgJE-dcPPN5-4venr7a2Xg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

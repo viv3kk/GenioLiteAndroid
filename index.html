@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Native Boiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <p>Hi from html 5</p>
+    
+    <input type="file" name="uploadFile" />
+    
+
+</body>
+<script>
+    // setInterval(function () {
+    //     var message = 'Hello!  Vivek time is: ' + (new Date().getTime());
+    //     window.postMessage(message, 'domain'); //send the message and target URI
+    // }, 20000);
+    document.addEventListener('message',function(data){
+        var msgData = JSON.parse(data.data);
+        window.postMessage(data, 'domain'); //send the message and target URI
+        //alert(msgData.platform);
+    })
+
+    async function blobToDataURL(image) {
+        return new Promise(function(resolve, reject) {
+        var fileReader = new FileReader();
+        fileReader.onloadend = function() {
+            return resolve(fileReader.result);
+        };
+        fileReader.readAsDataURL(image);
+       
+        });
+    };
+    document.querySelector('input').addEventListener('change', async function(event) {
+        file = event.target.files[0];
+        document.querySelector('div').style.backgroundImage = 'url(' + await blobToDataURL(file) + ')';
+        document.querySelector('h3').innerHTML = file.name + ': ' + file.type + ':' + file.size;
+        document.querySelector('img').src = file.name;
+        console.log(file);
+    });
+</script>
+</html>
